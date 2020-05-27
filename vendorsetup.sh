@@ -21,3 +21,4 @@
 # function: add_lunch_combo generic-eng
 
 add_lunch_combo omni_TB3710F-eng
+add_lunch_combo omni_TB3710F-userdebug
