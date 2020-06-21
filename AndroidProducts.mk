@@ -1,2 +1,2 @@
 PRODUCT_MAKEFILES := \
-    device/lenovo/TB3710F/omni_TB3710F.mk
+    $(LOCAL_DIR)/full_TB3710F.mk
