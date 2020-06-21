@@ -140,3 +140,6 @@ TARGET_LDPRELOAD += libxlog.so
 
 # Offline charging
 ADDITIONAL_DEFAULT_PROPERTIES += ro.mount.fs=EXT4
+
+# DEXPREOPT
+WITH_DEXPREOPT := true
