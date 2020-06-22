@@ -1,12 +1,6 @@
 DEVICE_DIR := device/lenovo/TB3710F
 VENDOR_DIR := vendor/lenovo/TB3710F
 
-ifeq ($(TARGET_PREBUILT_KERNEL),)
-	LOCAL_KERNEL := $(DEVICE_DIR)/kernel
-else
-	LOCAL_KERNEL := $(TARGET_PREBUILT_KERNEL)
-endif
-
 # Get non-open-source specific aspects
 $(call inherit-product-if-exists, $(VENDOR_DIR)/TB3710F-vendor.mk)
 

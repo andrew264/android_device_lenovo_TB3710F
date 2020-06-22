@@ -34,9 +34,6 @@ LOCAL_PRELINK_MODULE := false
 LOCAL_MODULE := libbt-vendor
 LOCAL_MODULE_TAGS := optional
 
-# Force installation into normal /system/lib
-#LOCAL_MODULE_PATH := $(TARGET_OUT_VENDOR_SHARED_LIBRARIES)
-
 include $(BUILD_SHARED_LIBRARY)
 
 endif

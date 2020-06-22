@@ -1,4 +1,4 @@
-Lenovo Tab 3 7 Essentials (MediaTek MT8127)
+Lenovo Tab 3 7 Essential (MediaTek MT8127)
 ==============
 
 Basic   | Spec Sheet

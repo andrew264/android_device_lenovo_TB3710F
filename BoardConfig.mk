@@ -46,7 +46,6 @@ TARGET_USE_CUSTOM_LUN_FILE_PATH := /sys/devices/platform/mt_usb/musb-hdrc.0.auto
 
 # Kernel
 BOARD_KERNEL_CMDLINE := enforcing=0 androidboot.selinux=permissive
-# BOARD_CUSTOM_BOOTIMG_MK := device/lenovo/TB3710F/mkbootimg.mk
 BOARD_KERNEL_BASE := 0x80000000
 BOARD_KERNEL_PAGESIZE := 2048
 BOARD_KERNEL_OFFSET := 0x00008000
@@ -61,15 +60,8 @@ BOARD_MKBOOTIMG_ARGS += --second_offset $(BOARD_SECOND_OFFSET)
 BOARD_MKBOOTIMG_ARGS += --tags_offset $(BOARD_KERNEL_TAGS_OFFSET)
 BOARD_MKBOOTIMG_ARGS += --mtk "boot"
 BOARD_CUSTOM_BOOTIMG += true
-BUILD_KERNEL_FROM_SOURCE := true
-ifeq ($(BUILD_KERNEL_FROM_SOURCE),true)
-    # build kernel from sources
-    TARGET_KERNEL_SOURCE := $(KERNEL_DIR)
-    TARGET_KERNEL_CONFIG := mt8127_defconfig
-else
-    # use prebuilt kernel
-    TARGET_PREBUILT_KERNEL := $(DEVICE_DIR)/kernel
-endif
+TARGET_KERNEL_SOURCE := $(KERNEL_DIR)
+TARGET_KERNEL_CONFIG := mt8127_defconfig
 
 # MTK
 BOARD_HAS_MTK_HARDWARE := true
@@ -108,7 +100,6 @@ TARGET_RUNNING_WITHOUT_SYNC_FRAMEWORK := true
 
 # Surfaceflinger optimization for VD surfaces
 TARGET_FORCE_HWC_FOR_VIRTUAL_DISPLAYS := true
-#NUM_FRAMEBUFFER_SURFACE_BUFFERS := 3
 
 # WIFI
 WPA_SUPPLICANT_VERSION := VER_0_8_X

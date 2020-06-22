@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<manifest>
+
+<!-- Remotes -->
+   <remote name="andrew264"
+   		fetch="https://github.com/andrew264" />
+     <remote name="CM"
+    	fetch="https://github.com/CyanogenMod" />
+
+<!-- Repo Removes -->
+	<remove-project name="CyanogenMod/android_frameworks_av" />
+	<remove-project name="CyanogenMod/android_frameworks_base" />
+	<remove-project name="CyanogenMod/android_packages_apps_Settings" />
+	<remove-project name="CyanogenMod/android_system_core" />
+	<remove-project name="CyanogenMod/android_system_netd" />
+
+<!-- Repo Replacements -->
+	<project path="frameworks/av" name="android_frameworks_av" remote="andrew264" revision="cm-12.1" />
+	<project path="frameworks/base" name="android_frameworks_base" remote="andrew264" revision="cm-12.1" />
+	<project path="packages/apps/Settings" name="cm_packages_apps_Settings" remote="andrew264" revision="cm-12.1" />
+	<project path="system/core" name="android_system_core" remote="andrew264" revision="cm-12.1" />
+	<project path="system/netd" name="android_system_netd" remote="andrew264" revision="cm-12.1" />
+
+<!-- New Repo Files -->
+	<project path="packages/apps/Snap" name="android_packages_apps_Snap" remote="CM" revision="cm-12.1" />
+	<project path="device/lenovo/TB3710F" name="android_device_lenovo_TB3710F" remote="andrew264" revision="cm-12.1" />
+	<project path="kernel/lenovo/TB3710F" name="android_kernel_lenovo_mt8127" remote="andrew264" revision="master" />
+	<project path="vendor/lenovo/TB3710F" name="android_vendor_lenovo_TB3710F" remote="andrew264" revision="cm-12.1" />
+
+</manifest>
