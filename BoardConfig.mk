@@ -132,9 +132,6 @@ TARGET_RECOVERY_FSTAB := $(DEVICE_DIR)/recovery.fstab
 
 TARGET_USE_CUSTOM_LUN_FILE_PATH := "/sys/devices/platform/mt_usb/musb-hdrc.0.auto/gadget/lun0/file"
 
-# Debug
-TARGET_USES_LOGD := true
-
 # libxlog
 TARGET_LDPRELOAD += libxlog.so
 
