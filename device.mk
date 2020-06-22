@@ -101,6 +101,13 @@ PRODUCT_PACKAGES += \
    libmtk_symbols \
    libstlport
 
+# CM's Snap camera
+PRODUCT_PACKAGES += \
+    Snap
+
+# Set default player to AwesomePlayer
+PRODUCT_PROPERTY_OVERRIDES += persist.sys.media.use-awesome=true
+
 PRODUCT_BUILD_PROP_OVERRIDES += BUILD_UTC_DATE=0
 
 PRODUCT_BUILD_PROP_OVERRIDES += \
