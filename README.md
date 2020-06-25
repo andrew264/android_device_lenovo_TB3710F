@@ -18,7 +18,7 @@ Camera  | VGA (Front-Facing)
 Not Working
 
 * HWC has issues
-* Video streaming (Youtube live...)
+* Video streaming (Works in browser :P)
 * FM Radio
 
 
