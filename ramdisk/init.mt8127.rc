@@ -1,9 +1,6 @@
-
-#connectivity related init script
 import init.project.rc
 import init.mt8127.usb.rc
 import init.mt8127.power.rc
-import init.aee.rc
 import init.ssd.rc
 import init.charging.rc
    
