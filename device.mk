@@ -87,6 +87,11 @@ PRODUCT_PACKAGES += \
 PRODUCT_PACKAGES += \
 	power.default
 
+# Power
+PRODUCT_PACKAGES += \
+    charger \
+    charger_res_images
+
 # network
 PRODUCT_PACKAGES += \
     netd
