@@ -13,8 +13,8 @@ $(call inherit-product, $(DEVICE_DIR)/overlay-binaries/overlay-binaries.mk)
 $(call inherit-product, $(SRC_TARGET_DIR)/product/languages_full.mk)
 
 # Device uses high-density artwork where available
-PRODUCT_AAPT_CONFIG := normal mdpi
-PRODUCT_AAPT_PREF_CONFIG := mdpi
+PRODUCT_AAPT_CONFIG := normal hdpi
+PRODUCT_AAPT_PREF_CONFIG := hdpi
 
 # red border fix - Thx to thp@1997
 PRODUCT_PROPERTY_OVERRIDES += \
