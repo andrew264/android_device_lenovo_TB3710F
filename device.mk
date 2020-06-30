@@ -1,34 +1,13 @@
 DEVICE_DIR := device/lenovo/TB3710F
-VENDOR_DIR := vendor/lenovo/TB3710F
-
-# Get non-open-source specific aspects
-$(call inherit-product-if-exists, $(VENDOR_DIR)/TB3710F-vendor.mk)
 
 # Device overlay
 DEVICE_PACKAGE_OVERLAYS += $(DEVICE_DIR)/overlay
 
-# Overlay Binaries
-$(call inherit-product, $(DEVICE_DIR)/overlay-binaries/overlay-binaries.mk)
+# Additional includes
+TARGET_SPECIFIC_HEADER_PATH := $(DEVICE_DIR)/include
 
-$(call inherit-product, $(SRC_TARGET_DIR)/product/languages_full.mk)
-
-# Device uses high-density artwork where available
-PRODUCT_AAPT_CONFIG := normal hdpi
-PRODUCT_AAPT_PREF_CONFIG := hdpi
-
-# red border fix - Thx to thp@1997
-PRODUCT_PROPERTY_OVERRIDES += \
-    persist.sys.strictmode.visual=0 \
-    persist.sys.strictmode.disable=1
-
-# no RIL
-PRODUCT_PROPERTY_OVERRIDES += \
-    keyguard.no_require_sim=1 \
-    ro.radio.use-ppp=no \
-    ro.config.nocheckin=yes \
-    ro.radio.noril=1 \
-    ro.carrier=wifi-only \
-    persist.radio.noril=1
+# Ramdisk
+PRODUCT_COPY_FILES += $(call find-copy-subdir-files,*,$(DEVICE_DIR)/ramdisk,root)
 
 # Permissions
 PRODUCT_COPY_FILES += \
@@ -67,62 +46,14 @@ PRODUCT_COPY_FILES += \
     frameworks/av/media/libstagefright/data/media_codecs_google_telephony.xml:system/etc/media_codecs_google_telephony.xml \
     frameworks/av/media/libstagefright/data/media_codecs_google_video.xml:system/etc/media_codecs_google_video.xml
 
-# Audio
-PRODUCT_PACKAGES += \
-	audio.a2dp.default \
-    audio_policy.default \
-    audio_policy.stub \
-    audio.r_submix.default \
-    audio.usb.default \
-    libaudio-resampler \
-    tinymix \
-    libtinyalsa \
-    libtinycompress
-
-# Bluetooth
-PRODUCT_PACKAGES += \
-	bluetooth.default
-
-# Power
-PRODUCT_PACKAGES += \
-	power.default
-
-# Power
-PRODUCT_PACKAGES += \
-    charger \
-    charger_res_images
-
-# network
-PRODUCT_PACKAGES += \
-    netd
-
-# IPv6 tethering
-PRODUCT_PACKAGES += \
-    ebtables \
-    ethertypes
-
-# root access
-PRODUCT_PACKAGES += \
-	su
-
-PRODUCT_PACKAGES += \
-   libmtk_symbols \
-   libstlport
-
-# CM's Snap camera
-PRODUCT_PACKAGES += \
-    Snap
-
-# Set default player to AwesomePlayer
-PRODUCT_PROPERTY_OVERRIDES += persist.sys.media.use-awesome=true
-
-PRODUCT_BUILD_PROP_OVERRIDES += BUILD_UTC_DATE=0
-
 PRODUCT_BUILD_PROP_OVERRIDES += \
     PRODUCT_DEVICE="TB3-710F"
 
-# call dalvik heap config
-$(call inherit-product, frameworks/native/build/tablet-7in-hdpi-1024-dalvik-heap.mk)
-
-# call hwui memory config		
-$(call inherit-product-if-exists, frameworks/native/build/phone-xxhdpi-2048-hwui-memory.mk)
+# no RIL
+PRODUCT_PROPERTY_OVERRIDES += \
+    keyguard.no_require_sim=1 \
+    ro.radio.use-ppp=no \
+    ro.config.nocheckin=yes \
+    ro.radio.noril=1 \
+    ro.carrier=wifi-only \
+    persist.radio.noril=1

@@ -216,7 +216,7 @@ on init
     setprop ro.mediatek.aal 1
 
     # mount debugfs for ftrace
-    mount debugfs none /sys/kernel/debug   
+    mount debugfs none /sys/kernel/debug
 
     # change owner
     chown system system /proc/bootprof
@@ -259,7 +259,6 @@ on boot
 
 on charger
     mount ext4 /emmc@android /system ro wait
-    start kpoc_charger
     start console
     start servicemanager
 
@@ -285,13 +284,6 @@ service fuse_sdcard1 /system/bin/sdcard -u 1023 -g 1023 -w 1023 -d /mnt/media_rw
 service fuse_usbotg /system/bin/sdcard -u 1023 -g 1023 -w 1023 -d /mnt/media_rw/usbotg /storage/usbotg
     class late_start
     disabled
-
-    # RGX init
-service pvrsrvctl /system/vendor/bin/pvrsrvctl --start 
-    class core
-    user root
-    group root
-    oneshot
 
 on post-fs-data
     mkdir /data/nvram 2770 root system
@@ -534,20 +526,6 @@ service akmd09911 /system/bin/akmd09911
     user system
     group system
     class main
-	
-service GoogleOtaAgent /system/bin/GoogleOtaBinder
-    class main
-    user system
-    group system
-
-    # workaround: disable mtkbt to avoid NE
-service mtkbt /system/bin/mtkbt
-    class late_start
-	socket bt.int.adp dgram 660 bluetooth net_bt
-	socket bt.a2dp.stream dgram 660 bluetooth net_bt
-	user bluetooth
-	group system vpn net_admin inet net_raw net_bt bluetooth net_bt_admin net_bt_stack sdcard_r
-	oneshot
 
 service dhcpcd_bt-pan /system/bin/dhcpcd -BK -dd
     class main
@@ -584,44 +562,22 @@ service iprenew_p2p /system/bin/dhcpcd -n
     disabled
     oneshot
 
-service dhcp6cDNS_wlan0 /system/bin/dhcp6c -c "/etc/wide-dhcpv6/dhcp6cDNS.conf" -Df wlan0
-    disabled
-    oneshot
-
-service dhcp6c_wlan0 /system/bin/dhcp6c -c "/etc/wide-dhcpv6/dhcp6c.conf" -Df wlan0
-    disabled
-    oneshot
-
 on property:service.dhcp6c_wlan0.enable=0
     stop dhcp6c_wlan0
 
 on property:service.dhcp6c_wlan0.enable=1
     start dhcp6c_wlan0
 
-service dhcp6c_PD /system/bin/dhcp6c -c "/etc/wide-dhcpv6/dhcp6cPD.conf" -Df
-    disabled
-    oneshot
-
 service thermal_manager /system/bin/thermal_manager
     class main
     user root
     oneshot
-
-service thermal /system/bin/thermal
-    class main
-    user system
-    group system
 
 service thermald /system/bin/thermald
     class main
     user system
     group system
 
-service aal /system/bin/aal
-    class core
-    user system
-    group system graphics radio
-    
 service pq /system/bin/pq
     class main
     user system
@@ -672,13 +628,6 @@ service ap_daemon /system/bin/wpa_supplicant \
 	disabled
 	oneshot
 
-service mobile_log_d /system/bin/mobile_log_d
-    class main
-    
-service netdiag /system/bin/netdiag
-    class main
-    socket netdiag stream 0660 root inet
-
 on property:persist.uartconsole.enable=1
     write /proc/mtprintk 1
 
@@ -705,29 +654,6 @@ service guiext-server /system/bin/guiext-server
     # BT relayer mode used VCOM
     chmod 0660 /dev/ttyGS2
     chown bluetooth radio /dev/ttyGS2
-
-service atci_service /system/bin/atci_service
-    class core
-    socket atci-service stream 660 radio system
-    socket atci-serv-fw stream 660 radio system
-    user root
-    disabled
-    group radio system
-    oneshot
-
-service atcid-daemon-u /system/bin/atcid
-    class main
-    user system
-    group radio system media
-    disabled
-    oneshot
-
-service atcid-daemon-e /system/bin/atcid
-    class core
-    user root
-    group radio system
-    disabled
-    oneshot
 
 service sbchk /system/bin/sbchk 
     class main
@@ -789,12 +715,6 @@ service charger /sbin/healthd -c
     class charger
     critical
     seclabel u:r:healthd:s0
-
-service kpoc_charger /system/bin/kpoc_charger
-    user root
-    group root
-    class charger
-    disabled
 
 service wmtLoader /system/bin/wmt_loader
     user root

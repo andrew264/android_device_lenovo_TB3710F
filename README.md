@@ -12,16 +12,10 @@ Storage | 8GB
 Display | 7" 1024 x 600 px
 Camera  | VGA (Front-Facing)
 
-# Build
-
+# cm-12.1 for TB3710F
 
 Not Working
 
 * HWC has issues
 * Video streaming (Works in browser :P)
 * FM Radio
-
-
-Working
-
-* Everything else

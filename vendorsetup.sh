@@ -1,3 +1,3 @@
-add_lunch_combo cm_TB3710F-eng
-add_lunch_combo cm_TB3710F-userdebug
-add_lunch_combo cm_TB3710F-user
+for var in eng user userdebug; do
+add_lunch_combo cm_TB3710F-$var
+done

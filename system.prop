@@ -1,9 +1,3 @@
-#
-# from device/huaqin/hq8127_tb_b2b_l/system.prop
-#
-#
-# system.prop for generic sdk
-#
 f.hwrotation=270
 ro.sf.lcd_density=160
 ro.opengles.version=131072

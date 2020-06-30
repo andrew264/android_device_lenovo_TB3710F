@@ -1,14 +1,5 @@
-USE_CAMERA_STUB := true
-
 DEVICE_DIR := device/lenovo/TB3710F
-VENDOR_DIR := vendor/lenovo/TB3710F
 KERNEL_DIR := kernel/lenovo/TB3710F
-
-# Additional includes
-TARGET_SPECIFIC_HEADER_PATH := $(DEVICE_DIR)/include
-
-# inherit from the proprietary version
--include $(VENDOR_DIR)/BoardConfigVendor.mk
 
 # Platform
 TARGET_BOARD_PLATFORM := mt8127
@@ -28,8 +19,10 @@ TARGET_NO_BOOTLOADER := true
 BOARD_HAS_NO_SELECT_BUTTON := true
 TARGET_BOOTLOADER_BOARD_NAME := mt8127
 TARGET_OTA_ASSERT_DEVICE := TB3-710F,TB3710F
+BLOCK_BASED_OTA :=false
 TARGET_INIT_VENDOR_LIB := libinit_TB3710F
 
+# Partitions
 BOARD_BOOTIMAGE_PARTITION_SIZE := 16777216
 BOARD_RECOVERYIMAGE_PARTITION_SIZE := 16777216
 BOARD_SYSTEMIMAGE_PARTITION_SIZE := 1992294400
@@ -38,11 +31,7 @@ BOARD_CACHEIMAGE_PARTITION_SIZE := 268435456
 BOARD_CACHEIMAGE_FILE_SYSTEM_TYPE := ext4
 BOARD_FLASH_BLOCK_SIZE := 131072
 TARGET_USERIMAGES_USE_EXT4 := true
-
 TARGET_USERIMAGES_SPARSE_EXT_DISABLED := false
-
-# Vold
-TARGET_USE_CUSTOM_LUN_FILE_PATH := /sys/devices/platform/mt_usb/musb-hdrc.0.auto/gadget/lun%d/file
 
 # Kernel
 BOARD_KERNEL_CMDLINE := enforcing=0 androidboot.selinux=permissive
@@ -66,17 +55,6 @@ TARGET_KERNEL_CONFIG := mt8127_defconfig
 # MTK
 BOARD_HAS_MTK_HARDWARE := true
 MTK_HARDWARE := true
-BLOCK_BASED_OTA :=false
-
-# to be used with hardware/mediatek repo
-BOARD_HAS_MTK := true
-MTK_HWC_CHIP := mt8127
-MTK_HWC_SUPPORT := true
-MTK_WFD_SUPPORT := true
-MTK_PQ_SUPPORT := true
-MTK_ION_SUPPORT := true
-MTK_HDMI_SUPPORT := false
-MTK_SENSOR_SUPPORT := true
 
 # Flags
 TARGET_GLOBAL_CFLAGS += -mfpu=neon -mfloat-abi=softfp
@@ -101,7 +79,10 @@ TARGET_RUNNING_WITHOUT_SYNC_FRAMEWORK := true
 # Surfaceflinger optimization for VD surfaces
 TARGET_FORCE_HWC_FOR_VIRTUAL_DISPLAYS := true
 
-# WIFI
+# Camera
+USE_CAMERA_STUB := true
+
+# Wifi
 WPA_SUPPLICANT_VERSION := VER_0_8_X
 BOARD_HOSTAPD_DRIVER := NL80211
 BOARD_HOSTAPD_PRIVATE_LIB := lib_driver_cmd_mt66xx
@@ -112,7 +93,7 @@ WIFI_DRIVER_FW_PATH_STA:=STA
 WIFI_DRIVER_FW_PATH_AP:=AP
 WIFI_DRIVER_FW_PATH_P2P:=P2P
 
-# BT (added 03/10/2016)
+# BT
 BOARD_HAVE_BLUETOOTH := true
 BOARD_HAVE_BLUETOOTH_MTK := true
 BOARD_BLUETOOTH_DOES_NOT_USE_RFKILL := true
@@ -120,14 +101,10 @@ BOARD_BLUETOOTH_BDROID_BUILDCFG_INCLUDE_DIR := $(DEVICE_DIR)/bluetooth
 
 # RECOVERY
 TARGET_RECOVERY_FSTAB := $(DEVICE_DIR)/recovery.fstab
-
 TARGET_USE_CUSTOM_LUN_FILE_PATH := "/sys/devices/platform/mt_usb/musb-hdrc.0.auto/gadget/lun0/file"
 
 # libxlog
 TARGET_LDPRELOAD += libxlog.so
-
-# Offline charging
-ADDITIONAL_DEFAULT_PROPERTIES += ro.mount.fs=EXT4
 
 # DEXPREOPT
 WITH_DEXPREOPT := true
