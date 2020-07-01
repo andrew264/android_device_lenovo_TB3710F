@@ -72,3 +72,6 @@ allow nvram_daemon nvram_device:chr_file {read write open ioctl};
 allow nvram_daemon pro_info_device:chr_file {read write open ioctl};
 
 allow nvram_daemon block_device:dir search;
+
+#============= nvram_daemon ==============
+allow nvram_daemon bt_ver_cfg:file { getattr open read };

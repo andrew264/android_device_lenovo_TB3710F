@@ -29,3 +29,6 @@ allow kisd self:capability {dac_override dac_read_search};
 allow kisd mtd_device:chr_file { open read write };
 allow kisd mtd_device:dir { search };
 allow kisd mmcblk0_block_device:blk_file { open read write };
+
+#============= kisd ==============
+allow kisd platformblk_device:blk_file { open read write };

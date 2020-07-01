@@ -24,3 +24,4 @@ sys.sim_inserted_status_0 u:object_r:ril_sim_inserted_status:s0
 sys.sim_inserted_status_1 u:object_r:ril_sim_inserted_status:s0
 ro.serialno          u:object_r:serial_number_prop:s0
 vold.encryption.type u:object_r:vold_encryption_type_prop:s0
+bwc.mm._Profile		 u:object_r:default_prop:s0
