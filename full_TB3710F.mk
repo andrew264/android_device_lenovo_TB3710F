@@ -56,7 +56,3 @@ PRODUCT_PACKAGES += \
 # Display
 PRODUCT_PACKAGES += \
     libion
-
-# Sensor Calibration
-PRODUCT_PACKAGES += \
-    libem_sensor_jni
