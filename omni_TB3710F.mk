@@ -43,9 +43,6 @@ PRODUCT_PROPERTY_OVERRIDES += \
 PRODUCT_BUILD_PROP_OVERRIDES += \
     PRODUCT_DEVICE="TB3-710F"
 
-# Set BUILD_FINGERPRINT variable to be picked up by both system and build.prop
-BUILD_FINGERPRINT := Lenovo/LenovoTB3-710F/TB3-710F:5.0.1/LRX21M/TB3-710F_S000026_160727_ROW:user/release-keys
-
 ## Device identifier. This must come after all inclusions
 PRODUCT_NAME := omni_TB3710F
 PRODUCT_DEVICE :=TB3710F
