@@ -6,6 +6,10 @@ DEVICE_PACKAGE_OVERLAYS += $(DEVICE_DIR)/overlay
 # Additional includes
 TARGET_SPECIFIC_HEADER_PATH := $(DEVICE_DIR)/include
 
+# Install init.d scripts
+PRODUCT_COPY_FILES += \
+    $(DEVICE_DIR)/configs/99exfat-support:system/etc/init.d/99exfat-support
+
 # Ramdisk
 PRODUCT_COPY_FILES += $(call find-copy-subdir-files,*,$(DEVICE_DIR)/ramdisk,root)
 
@@ -32,19 +36,23 @@ PRODUCT_COPY_FILES += \
     frameworks/native/data/etc/android.hardware.bluetooth_le.xml:system/etc/permissions/android.hardware.bluetooth_le.xml \
     frameworks/native/data/etc/android.hardware.bluetooth.xml:system/etc/permissions/android.hardware.bluetooth.xml \
     frameworks/native/data/etc/android.hardware.ethernet.xml:system/etc/permissions/android.hardware.ethernet.xml \
+    frameworks/native/data/etc/android.hardware.location.xml:system/etc/permissions/android.hardware.location.xml \
     frameworks/native/data/etc/android.hardware.location.gps.xml:system/etc/permissions/android.hardware.location.gps.xml \
     frameworks/native/data/etc/android.hardware.telephony.gsm.xml:system/etc/permissions/android.hardware.telephony.gsm.xml \
     frameworks/native/data/etc/android.hardware.touchscreen.multitouch.distinct.xml:system/etc/permissions/android.hardware.touchscreen.multitouch.distinct.xml \
     frameworks/native/data/etc/android.hardware.touchscreen.multitouch.xml:system/etc/permissions/android.hardware.touchscreen.multitouch.xml \
+    frameworks/native/data/etc/android.hardware.touchscreen.multitouch.jazzhand.xml:system/etc/permissions/android.hardware.touchscreen.multitouch.jazzhand.xml \
     frameworks/native/data/etc/android.hardware.touchscreen.xml:system/etc/permissions/android.hardware.touchscreen.xml \
     frameworks/native/data/etc/android.software.sip.xml:system/etc/permissions/android.software.sip.xml
 
 PRODUCT_COPY_FILES += \
-	$(DEVICE_DIR)/configs/media_codecs.xml:system/etc/media_codecs.xml \
-	$(DEVICE_DIR)/configs/media_profiles.xml:system/etc/media_profiles.xml \
     frameworks/av/media/libstagefright/data/media_codecs_google_audio.xml:system/etc/media_codecs_google_audio.xml \
     frameworks/av/media/libstagefright/data/media_codecs_google_telephony.xml:system/etc/media_codecs_google_telephony.xml \
-    frameworks/av/media/libstagefright/data/media_codecs_google_video.xml:system/etc/media_codecs_google_video.xml
+    frameworks/av/media/libstagefright/data/media_codecs_google_video_le.xml:system/etc/media_codecs_google_video_le.xml \
+    $(DEVICE_DIR)/configs/media/media_codecs.xml:system/etc/media_codecs.xml \
+    $(DEVICE_DIR)/configs/media/media_codecs_performance.xml:system/etc/media_codecs_performance.xml \
+    $(DEVICE_DIR)/configs/media/media_codecs_mediatek_video.xml:system/etc/media_codecs_mediatek_video.xml \
+    $(DEVICE_DIR)/configs/media/media_profiles.xml:system/etc/media_profiles.xml
 
 PRODUCT_BUILD_PROP_OVERRIDES += \
     PRODUCT_DEVICE="TB3-710F"
@@ -57,3 +65,15 @@ PRODUCT_PROPERTY_OVERRIDES += \
     ro.radio.noril=1 \
     ro.carrier=wifi-only \
     persist.radio.noril=1
+
+# red border fix - Thx to thp@1997
+PRODUCT_PROPERTY_OVERRIDES += \
+    persist.sys.strictmode.visual=0 \
+    persist.sys.strictmode.disable=1
+
+PRODUCT_DEFAULT_PROPERTY_OVERRIDES += \
+    camera.disable_zsl_mode=1
+
+# Storage
+PRODUCT_PROPERTY_OVERRIDES += \
+    ro.sys.sdcardfs=true

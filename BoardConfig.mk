@@ -14,12 +14,13 @@ TARGET_CPU_ABI2 := armeabi
 TARGET_CPU_SMP := true
 ARCH_ARM_HAVE_TLS_REGISTER := true
 ARCH_ARM_HAVE_NEON := true
+ARCH_ARM_HAVE_VFP := true
 
 TARGET_NO_BOOTLOADER := true
 BOARD_HAS_NO_SELECT_BUTTON := true
 TARGET_BOOTLOADER_BOARD_NAME := mt8127
 TARGET_OTA_ASSERT_DEVICE := TB3-710F,TB3710F
-BLOCK_BASED_OTA :=false
+#BLOCK_BASED_OTA :=false
 
 # Partitions
 BOARD_BOOTIMAGE_PARTITION_SIZE := 16777216
@@ -46,7 +47,8 @@ BOARD_MKBOOTIMG_ARGS += --kernel_offset $(BOARD_KERNEL_OFFSET)
 BOARD_MKBOOTIMG_ARGS += --ramdisk_offset $(BOARD_RAMDISK_OFFSET)
 BOARD_MKBOOTIMG_ARGS += --second_offset $(BOARD_SECOND_OFFSET)
 BOARD_MKBOOTIMG_ARGS += --tags_offset $(BOARD_KERNEL_TAGS_OFFSET)
-BOARD_MKBOOTIMG_ARGS += --mtk "boot"
+#BOARD_MKBOOTIMG_ARGS += --mtk "boot"
+BOARD_CUSTOM_BOOTIMG_MK := device/lenovo/TB3710F/mkbootimg.mk
 BOARD_CUSTOM_BOOTIMG += true
 TARGET_KERNEL_SOURCE := $(KERNEL_DIR)
 TARGET_KERNEL_CONFIG := mt8127_defconfig
@@ -58,10 +60,6 @@ MTK_HARDWARE := true
 # Flags
 TARGET_GLOBAL_CFLAGS += -mfpu=neon -mfloat-abi=softfp
 TARGET_GLOBAL_CPPFLAGS += -DMTK_HARDWARE -mfpu=neon -mfloat-abi=softfp
-COMMON_GLOBAL_CFLAGS += -DREFRESH_RATE=60
-COMMON_GLOBAL_CFLAGS += -DMTK_HARDWARE
-COMMON_GLOBAL_CFLAGS += -DADD_LEGACY_ACQUIRE_BUFFER_SYMBOL
-COMMON_GLOBAL_CFLAGS += -DNO_SECURE_DISCARD
 
 # Graphics
 USE_OPENGL_RENDERER := true
@@ -72,25 +70,37 @@ TARGET_USES_ION := true
 TARGET_DISPLAY_USE_RETIRE_FENCE := true
 MAX_EGL_CACHE_KEY_SIZE := 12*1024
 MAX_EGL_CACHE_SIZE := 1024*1024
-COMMON_GLOBAL_CFLAGS += -DDISABLE_HW_ID_MATCH_CHECK
 TARGET_RUNNING_WITHOUT_SYNC_FRAMEWORK := true
+NUM_FRAMEBUFFER_SURFACE_BUFFERS := 3
 
 # Surfaceflinger optimization for VD surfaces
 TARGET_FORCE_HWC_FOR_VIRTUAL_DISPLAYS := true
 
 # Camera
 USE_CAMERA_STUB := true
+TARGET_HAS_LEGACY_CAMERA_HAL1 := true
+TARGET_CAMERASERVICE_CLOSES_NATIVE_HANDLES := true
 
-# Wifi
+# Legacy blobs
+TARGET_NEEDS_TEXT_RELOCATIONS := true
+
+# Fix video autoscaling on old OMX decoders
+TARGET_OMX_LEGACY_RESCALING:= true
+
+# WIFI
+BOARD_WLAN_DEVICE := MediaTek
 WPA_SUPPLICANT_VERSION := VER_0_8_X
 BOARD_HOSTAPD_DRIVER := NL80211
 BOARD_HOSTAPD_PRIVATE_LIB := lib_driver_cmd_mt66xx
 BOARD_WPA_SUPPLICANT_DRIVER := NL80211
 BOARD_WPA_SUPPLICANT_PRIVATE_LIB := lib_driver_cmd_mt66xx
-WIFI_DRIVER_FW_PATH_PARAM:="/dev/wmtWifi"
-WIFI_DRIVER_FW_PATH_STA:=STA
-WIFI_DRIVER_FW_PATH_AP:=AP
-WIFI_DRIVER_FW_PATH_P2P:=P2P
+WIFI_DRIVER_FW_PATH_PARAM := /dev/wmtWifi
+WIFI_DRIVER_FW_PATH_AP := AP
+WIFI_DRIVER_FW_PATH_STA := STA
+WIFI_DRIVER_FW_PATH_P2P := P2P
+WIFI_DRIVER_STATE_CTRL_PARAM := /dev/wmtWifi
+WIFI_DRIVER_STATE_ON := 1
+WIFI_DRIVER_STATE_OFF := 0
 
 # BT
 BOARD_HAVE_BLUETOOTH := true
@@ -102,8 +112,43 @@ BOARD_BLUETOOTH_BDROID_BUILDCFG_INCLUDE_DIR := $(DEVICE_DIR)/bluetooth
 TARGET_RECOVERY_FSTAB := $(DEVICE_DIR)/recovery.fstab
 TARGET_USE_CUSTOM_LUN_FILE_PATH := "/sys/devices/platform/mt_usb/musb-hdrc.0.auto/gadget/lun0/file"
 
-# libxlog
-TARGET_LDPRELOAD += libxlog.so
+# system.prop
+TARGET_SYSTEM_PROP := $(DEVICE_DIR)/system.prop
+
+# Seccomp filter
+BOARD_SECCOMP_POLICY += $(DEVICE_DIR)/seccomp
+
+# SELinux
+BOARD_SEPOLICY_DIRS += $(DEVICE_DIR)/sepolicy
+
+# Shims
+TARGET_LDPRELOAD := libxlog.so:libmtk_symbols.so
+LINKER_FORCED_SHIM_LIBS := /system/lib/egl/libEGL_mali.so|libxlog.so:/system/lib/egl/libGLESv1_CM_mali.so|libxlog.so:/system/lib/egl/libGLESv2_mali.so|libxlog.so:/system/lib/libMtkOmxVenc.so|libmtk_symbols.so:/system/lib/libcam_utils.so|libmtk_symbols.so:/system/vendor/lib/libwvm.so|libmtk_symbols.so
 
 # DEXPREOPT
+ifeq ($(TARGET_BUILD_VARIANT),user)
 WITH_DEXPREOPT := true
+DONT_DEXPREOPT_PREBUILTS := true
+endif
+
+# Configure jemalloc for low memory
+MALLOC_SVELTE := true
+
+# Enable Minikin text layout engine (will be the default soon)
+USE_MINIKIN := true
+
+# Disable memcpy opt (for audio libraries)
+TARGET_CPU_MEMCPY_OPT_DISABLE := true
+
+# FIX Freezing
+TARGET_NO_SENSOR_PERMISSION_CHECK := true
+TARGET_REQUIRES_SYNCHRONOUS_SETSURFACE := true
+
+# Fonts
+EXTENDED_FONT_FOOTPRINT := true
+
+# Bootanimation
+TARGET_BOOTANIMATION_MULTITHREAD_DECODE := true
+
+# Dalvik Tweak
+PRODUCT_TAGS += dalvik.gc.type-precise

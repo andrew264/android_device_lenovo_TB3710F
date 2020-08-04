@@ -9,6 +9,9 @@ mediatek.wlan.ctia=0
 wifi.tethering.interface=ap0
 wifi.direct.interface=p2p0
 
+debug.hwui.render_dirty_regions=false
+ro.egl.destroy_after_detach=true
+
 # Switching Menu of Mass storage and MTP
 ro.sys.usb.storage.type=mtp,mass_storage
 
@@ -100,6 +103,15 @@ ro.mediatek.project.path=device/huaqin/hq8127_tb_b2b_l
 ro.hq_ut_function_modify=1
 ro.sf.hwrotation=270
 ro.mediatek.chip_ver=S01
+ro.lenovo.series=Lenovo TAB3 7 Essential
 # adb
 persist.sys.usb.config=mtp,adb
 
+dalvik.vm.heapstartsize=5m
+dalvik.vm.heapgrowthlimit=128m
+dalvik.vm.heapsize=256m
+dalvik.vm.heaptargetutilization=0.75
+dalvik.vm.heapminfree=512k
+dalvik.vm.heapmaxfree=2m
+media.stagefright.legacyencoder=true
+media.stagefright.less-secure=true

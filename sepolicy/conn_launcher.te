@@ -1,0 +1,10 @@
+type conn_launcher_exec, exec_type, file_type;
+type conn_launcher, domain, domain_deprecated;
+
+init_daemon_domain(conn_launcher)
+
+allow conn_launcher stpwmt_device:chr_file rw_file_perms;
+set_prop(factory, wmt_prop)
+
+allow conn_launcher init:unix_stream_socket connectto;
+allow conn_launcher property_socket:sock_file write;
