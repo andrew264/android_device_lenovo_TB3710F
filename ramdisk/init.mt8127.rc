@@ -207,10 +207,10 @@ on post-fs
     # Workaround for old nvram blobs
     mkdir /dev/block/platform/mtk-msdc.0/by-name 0755 root system
     symlink /dev/nvram /dev/block/platform/mtk-msdc.0/by-name/nvram
-    exec /system/bin/chmod 0660 /dev/block/platform/mtk-msdc.0/by-name/nvram
+    exec /system/bin/chmod 0777 /dev/block/platform/mtk-msdc.0/by-name/nvram
     exec /system/bin/chown root:system /dev/block/platform/mtk-msdc.0/by-name/nvram
     symlink /dev/pro_info /dev/block/platform/mtk-msdc.0/by-name/proinfo
-    exec /system/bin/chmod 0660 /dev/block/platform/mtk-msdc.0/by-name/proinfo
+    exec /system/bin/chmod 0777 /dev/block/platform/mtk-msdc.0/by-name/proinfo
     exec /system/bin/chown root:system /dev/block/platform/mtk-msdc.0/by-name/proinfo
 
 on late-fs
@@ -222,12 +222,11 @@ on late-fs
 
 on post-fs-data
 
-    mkdir /data/nvram 0771 root camera
-    mkdir /data/nvram/APCFG 0770 root camera
-    mkdir /data/nvram/APCFG/APRDCL 0770 root camera
-    mkdir /data/nvram/APCFG/APRDEB 0770 root camera
-
-    restorecon_recursive /data/nvram
+    mkdir /data/nvram 2777 root camera
+    chmod 0777 /dev/nvram
+    mkdir /data/nvram/APCFG 2777 root camera
+    mkdir /data/nvram/APCFG/APRDCL 2777 root camera
+    mkdir /data/nvram/APCFG/APRDEB 2777 root camera
 
     # rfkill
     chmod 0660 /dev/rfkill

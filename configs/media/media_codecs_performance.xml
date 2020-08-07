@@ -130,7 +130,6 @@ Only the three quirks included above are recognized at this point:
             <Limit name="measured-frame-rate-720x480" range="142-494" />
             <Limit name="measured-frame-rate-1280x720" range="75-262" />
             <Limit name="measured-frame-rate-1920x1080" range="38-132" />
-            <Limit name="measured-frame-rate-3840x2160" range="14-48" />
         </MediaCodec>
         <MediaCodec name="OMX.MTK.VIDEO.DECODER.VPX" type="video/x-vnd.on2.vp8" update="true">
             <Limit name="measured-frame-rate-320x240" range="158-549" />
@@ -143,7 +142,6 @@ Only the three quirks included above are recognized at this point:
             <Limit name="measured-frame-rate-640x360" range="92-321" />
             <Limit name="measured-frame-rate-1280x720" range="40-138" />
             <Limit name="measured-frame-rate-1920x1080" range="23-79" />
-            <Limit name="measured-frame-rate-3840x2160" range="7-25" />
         </MediaCodec>
         <!-- Google codec -->
         <MediaCodec name="OMX.google.h263.decoder" type="video/3gpp" update="true">
