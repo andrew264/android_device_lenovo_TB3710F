@@ -23,3 +23,4 @@ allow vold mkfs_exec:file { execute read open getattr execute_no_trans };
 
 allow vold block_device:dir create_dir_perms;
 allow vold shell_exec:file rx_file_perms;
+allow vold blkid_exec:file { execute execute_no_trans getattr open read };

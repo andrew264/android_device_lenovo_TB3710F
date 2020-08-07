@@ -24,6 +24,7 @@ type fm_device, dev_type;
 type Vcodec_device, dev_type;
 type M4U_device_device, dev_type;
 type mtk_smi_device, dev_type;
+type sw_sync_device, dev_type;
 
 # SPM
 type spm_device, dev_type;

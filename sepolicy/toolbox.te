@@ -1,0 +1,4 @@
+#============= toolbox ==============
+allow toolbox nvram_device:chr_file setattr;
+allow toolbox proinfo_device:chr_file setattr;
+allow toolbox self:capability { dac_override fsetid };
