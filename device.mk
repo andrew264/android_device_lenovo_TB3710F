@@ -54,6 +54,17 @@ PRODUCT_COPY_FILES += \
     $(DEVICE_DIR)/configs/media/media_codecs_mediatek_video.xml:system/etc/media_codecs_mediatek_video.xml \
     $(DEVICE_DIR)/configs/media/media_profiles.xml:system/etc/media_profiles.xml
 
+# Wifi config files
+PRODUCT_COPY_FILES += \
+    $(DEVICE_DIR)/configs/wifi/p2p_supplicant_overlay.conf:system/etc/wifi/p2p_supplicant_overlay.conf \
+    $(DEVICE_DIR)/configs/wifi/wpa_supplicant.conf:system/etc/wifi/wpa_supplicant.conf \
+    $(DEVICE_DIR)/configs/wifi/wpa_supplicant_overlay.conf:system/etc/wifi/wpa_supplicant_overlay.conf
+
+PRODUCT_COPY_FILES += \
+    $(DEVICE_DIR)/configs/hostapd/hostapd_default.conf:system/etc/hostapd/hostapd_default.conf \
+    $(DEVICE_DIR)/configs/hostapd/hostapd.accept:system/etc/hostapd/hostapd.accept \
+    $(DEVICE_DIR)/configs/hostapd/hostapd.deny:system/etc/hostapd/hostapd.deny
+
 PRODUCT_BUILD_PROP_OVERRIDES += \
     PRODUCT_DEVICE="TB3-710F"
 
