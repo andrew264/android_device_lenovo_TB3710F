@@ -24,6 +24,33 @@ ro.sys.usb.charging.only=yes
 # add support for USB storage type
 persist.sys.isUsbOtgEnabled=1
 
+# System Tweaks
+ro.HOME_APP_ADJ=1
+ro.config.hw_quickpoweron=true
+
+# Graphics Enhancement
+debug.performance.tuning=1
+video.accelerate.hw=1
+
+# Performance
+debug.composition.type=gpu
+debug.kill_allocating_task=0
+debug.overlayui.enable=1
+debug.egl.profiler=1
+debug.egl.hw=1
+debug.sf.hw=1
+hw3d.force=1
+hw2d.force=1
+force_hw_ui=true
+persist.sys.ui.hw=1
+ro.config.disable.hw_accel=false
+ro.kernel.checkjni=0
+ro.kernel.android.checkjni=0
+profiler.force_disable_err_rpt=1
+profiler.force_disable_ulog=1
+persist.sys.purgeable_assets=1
+persist.sys.use_dithering=1
+
 #
 # ADDITIONAL_BUILD_PROPERTIES
 #

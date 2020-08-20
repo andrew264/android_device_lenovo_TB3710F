@@ -6,20 +6,24 @@
    		fetch="https://github.com/andrew264" />
 
 <!-- Repo Removes -->
+	<remove-project name="LineageOS/android_external_wpa_supplicant_8" />
 	<remove-project name="LineageOS/android_frameworks_av" />
 	<remove-project name="LineageOS/android_frameworks_base" />
 	<remove-project name="LineageOS/android_frameworks_native" />
 	<remove-project name="LineageOS/android_hardware_libhardware" />
 	<remove-project name="LineageOS/android_system_core" />
 	<remove-project name="LineageOS/android_system_netd" />
+	<remove-project name="LineageOS/android_system_sepolicy" />
 
 <!-- Repo Replacements -->
+	<project path="external/wps_supplicant_8" name="android_external_wpa_supplicant_8" remote="andrew264" revision="cm-14.1" />
 	<project path="frameworks/av" name="android_frameworks_av" remote="andrew264" revision="cm-14.1" />
 	<project path="frameworks/base" name="android_frameworks_base" remote="andrew264" revision="cm-14.1" />
 	<project path="frameworks/native" name="android_frameworks_native" remote="andrew264" revision="cm-14.1" />
 	<project path="hardware/libhardware" name="android_hardware_libhardware" remote="andrew264" revision="cm-14.1" />
 	<project path="system/core" name="android_system_core" remote="andrew264" revision="cm-14.1" />
 	<project path="system/netd" name="android_system_netd" remote="andrew264" revision="cm-14.1" />
+	<project path="system/sepolicy" name="android_system_sepolicy" remote="andrew264" revision="cm-14.1" />
 
 <!-- New Repo Files -->
 	<project path="device/lenovo/TB3710F" name="android_device_lenovo_TB3710F" remote="andrew264" revision="cm-14.1" />

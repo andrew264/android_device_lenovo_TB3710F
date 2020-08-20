@@ -31,3 +31,4 @@ allow mediaserver mmc_device:blk_file { open read write };
 allow mediaserver nvram_device:chr_file { open read write };
 
 allow mediaserver guiext-server_service:service_manager find;
+allow mediaserver sysfs_membw:file { open write };

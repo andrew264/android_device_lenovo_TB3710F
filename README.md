@@ -14,3 +14,9 @@ Camera  | VGA (Front-Facing)
 
 # cm-14.1 for TB3710F
 
+## Bugs/Broken
+	* FM Radio
+	* Video recording
+	* Frame drops in 1080p videos in HW decoder
+	* GPS
+

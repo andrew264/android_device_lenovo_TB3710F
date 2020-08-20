@@ -53,7 +53,6 @@ PRODUCT_PACKAGES += \
 
 # Mtk old binaries
 PRODUCT_PACKAGES += \
-    libstlport \
     libxlog \
     libmtk_symbols
 

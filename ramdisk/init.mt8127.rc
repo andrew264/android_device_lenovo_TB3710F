@@ -93,7 +93,7 @@ on init
     chmod 0666 /dev/ion
 
 	# Change BWC permission
-    chmod 0664 /sys/bus/platform/drivers/mem_bw_ctrl/concurrency_scenario
+    chmod 0666 /sys/bus/platform/drivers/mem_bw_ctrl/concurrency_scenario
     chown system media /sys/bus/platform/drivers/mem_bw_ctrl/concurrency_scenario
 
 	# Change SMI driver permission   
@@ -305,6 +305,29 @@ on post-fs-data
 
     # GPIO
     chmod 0666 /dev/mtgpio
+
+    # H264 Decoder
+    chmod 777 /dev/MT6516_H264_DEC
+
+    # Internal SRAM Driver
+    chmod 777 /dev/MT6516_Int_SRAM
+
+    # MM QUEUE Driver
+    chmod 777 /dev/MT6516_MM_QUEUE
+
+    # MPEG4 Decoder
+    chmod 777 /dev/MT6516_MP4_DEC
+
+    # MPEG4 Encoder
+    chmod 777 /dev/MT6516_MP4_ENC
+
+    # Android SEC related device nodes
+    chmod 0660 /dev/sec
+    chown root system /dev/sec
+
+    # trustzone related interface
+    chmod 0666 /dev/trustzone
+    chown root media /dev/trustzone
 
 	# Sensor
     chmod 0660 /dev/hwmsensor
