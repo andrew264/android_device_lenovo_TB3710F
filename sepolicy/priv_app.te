@@ -5,3 +5,6 @@ allow priv_app guiext-server_service:service_manager find;
 allow priv_app pq_service:service_manager find;
 
 allow priv_app device:dir { read open };
+
+# Trustzone
+allow priv_app trustzone_device:chr_file { ioctl open read write };

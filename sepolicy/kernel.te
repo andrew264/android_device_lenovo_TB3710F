@@ -3,6 +3,7 @@ allow kernel nvdata_file:file r_file_perms;
 allow kernel self:capability dac_override;
 allow kernel wifi_data_file:dir search;
 allow kernel wifi_data_file:file r_file_perms;
+allow kernel vold_device:blk_file { read write };
 
 # for /cache/gtp_(clk|ref).bin
 allow kernel cache_file:file { write open };

@@ -32,3 +32,7 @@ allow mediaserver nvram_device:chr_file { open read write };
 
 allow mediaserver guiext-server_service:service_manager find;
 allow mediaserver sysfs_membw:file { open write };
+
+allow mediaserver ebc_device:chr_file { read write ioctl open };
+allow mediaserver trustzone_device:chr_file { ioctl open read write };
+

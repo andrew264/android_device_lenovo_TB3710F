@@ -2,6 +2,7 @@ type protect_s_data_file, file_type, data_file_type;
 type protect_f_data_file, file_type, data_file_type;
 
 type nvdata_file, file_type, data_file_type;
+type nvram_data_file, file_type, data_file_type;
 
 type agpsd_data_file, file_type, data_file_type;
 type mnld_data_file, file_type, data_file_type;

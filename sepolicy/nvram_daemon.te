@@ -33,3 +33,4 @@ allow nvram_daemon proinfo_device:chr_file { read write open ioctl };
 
 allow nvram_daemon system_data_file:dir { create write add_name };
 allow nvram_daemon system_data_file:file { read open getattr };
+allow nvram_daemon platformblk_device:blk_file { open read write };

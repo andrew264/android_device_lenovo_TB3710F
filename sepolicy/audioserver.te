@@ -19,3 +19,4 @@ allow audioserver sysfs_boot_mode:file { read open };
 
 allow audioserver nvram_device:chr_file rw_file_perms;
 allow audioserver devmap_device:chr_file r_file_perms;
+allow audioserver ebc_device:chr_file { open read write };

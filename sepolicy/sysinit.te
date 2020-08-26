@@ -1,3 +1,4 @@
 #============= sysinit ==============
 allow sysinit mmc_device:blk_file { getattr ioctl open read write };
 allow sysinit mnt_media_rw_file:dir { add_name create search write };
+allow sysinit platformblk_device:blk_file { getattr ioctl open read write };

@@ -24,3 +24,14 @@ allow vold mkfs_exec:file { execute read open getattr execute_no_trans };
 allow vold block_device:dir create_dir_perms;
 allow vold shell_exec:file rx_file_perms;
 allow vold blkid_exec:file { execute execute_no_trans getattr open read };
+
+allow vold init:fd use;
+allow vold platform_app:fd use;
+allow vold null_device:chr_file { read write open };
+allow vold self:unix_stream_socket { read write };
+allow vold properties_device:dir getattr;
+allow vold properties_serial:file { getattr read open };
+allow vold nvram_device:chr_file { read write open };
+allow vold nvram_data_file:lnk_file read;
+
+allow vold mkfs_exec:file { execute read open getattr execute_no_trans };

@@ -92,12 +92,16 @@ NFC device
 /dev/ttySDIO*	0660	radio	sdcard_rw
 /dev/ttyRB*     0660    radio   radio
 
+# BT SCO CVSD, for MT6572 and MT6582 CVSD codec on AP
+/dev/ebc                  0660   media      media
+
 # Mali node
 /dev/mali                0666    system graphics
 /dev/mali0              0666   system      graphics
 
 # Change ION driver permission
 /dev/ion                  0666   system     graphics
+/dev/mtkfb_vsync          0660   system     graphics
 
 # Touch
 /dev/touch              0660   root  system

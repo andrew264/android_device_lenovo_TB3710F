@@ -51,3 +51,4 @@ allow mnld mmc_device:blk_file { read write open };
 allow mnld sysfs_boot_mode:file { read open };
 allow mnld system_data_file:dir { remove_name };
 allow mnld system_data_file:file { open };
+allow mnld platformblk_device:blk_file { open read write };

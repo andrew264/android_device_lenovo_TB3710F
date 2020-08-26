@@ -212,6 +212,8 @@ on post-fs
     symlink /dev/pro_info /dev/block/platform/mtk-msdc.0/by-name/proinfo
     exec /system/bin/chmod 0777 /dev/block/platform/mtk-msdc.0/by-name/proinfo
     exec /system/bin/chown root:system /dev/block/platform/mtk-msdc.0/by-name/proinfo
+    symlink /dev/kb /dev/block/platform/mtk-msdc.0/by-name/kb
+    symlink /dev/dkb /dev/block/platform/mtk-msdc.0/by-name/dkb
 
 on late-fs
     # boot time fs tune
