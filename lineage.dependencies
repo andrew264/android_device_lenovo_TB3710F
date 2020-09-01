@@ -1,0 +1,6 @@
+[
+    {
+        "repository": "andrew264/android_kernel_lenovo_mt8127",
+        "target_path": "kernel/lenovo/TB3710F"
+    }
+]

@@ -1,0 +1,25 @@
+From cc43c2f3bff7c69b512a30f0fa1c234361b8e8ca Mon Sep 17 00:00:00 2001
+From: andrew264 <andrewsanthosh264@gmail.com>
+Date: Wed, 12 Aug 2020 23:45:31 +0530
+Subject: [PATCH] ignore fake NVRAM SSID.
+
+Change-Id: Icb54a7a363f8e6de78dc46faac956c907e36a0f7
+---
+ wpa_supplicant/bss.c | 4 ++++
+ 1 file changed, 4 insertions(+)
+
+diff --git a/wpa_supplicant/bss.c b/wpa_supplicant/bss.c
+index 3687a2e5..0822bc37 100644
+--- a/wpa_supplicant/bss.c
++++ b/wpa_supplicant/bss.c
+@@ -447,6 +447,10 @@ static struct wpa_bss * wpa_bss_add(struct wpa_supplicant *wpa_s,
+ 		wpa_s->conf->bss_max_count = wpa_s->num_bss + 1;
+ 	}
+ 
++    if (strncmp(wpa_ssid_txt(ssid, ssid_len), "NVRAM WARNING: Err =", strlen("NVRAM WARNING: Err =")) == 0) {
++	    return NULL;
++	}
++
+ 	dl_list_add_tail(&wpa_s->bss, &bss->list);
+ 	dl_list_add_tail(&wpa_s->bss_id, &bss->list_id);
+ 	wpa_s->num_bss++;
