@@ -107,6 +107,10 @@ on init
     chmod 0660 /dev/mtk_sched
     chown system media /dev/mtk_sched
 
+    # GED
+    chmod 0666 /proc/ged
+    chown root system /proc/ged
+
 	# BT SCO CVSD
     chmod 0660 /dev/ebc
     chown system media /dev/ebc
