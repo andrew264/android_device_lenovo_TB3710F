@@ -65,6 +65,13 @@ PRODUCT_COPY_FILES += \
     $(DEVICE_DIR)/configs/hostapd/hostapd.accept:system/etc/hostapd/hostapd.accept \
     $(DEVICE_DIR)/configs/hostapd/hostapd.deny:system/etc/hostapd/hostapd.deny
 
+# TWRP
+PRODUCT_COPY_FILES += \
+    $(DEVICE_DIR)/ramdisk/twrp.fstab:recovery/root/etc/twrp.fstab \
+    $(DEVICE_DIR)/ramdisk/fstab.mt8127:recovery/root/fstab.mt8127 \
+    $(DEVICE_DIR)/ramdisk/init.mt8127.rc:recovery/root/init.mt8127.rc \
+    $(DEVICE_DIR)/ramdisk/init.mt8127.usb.rc:recovery/root/init.mt8127.usb.rc
+
 PRODUCT_BUILD_PROP_OVERRIDES += \
     PRODUCT_DEVICE="TB3-710F"
 
