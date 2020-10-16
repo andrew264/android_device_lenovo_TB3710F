@@ -4,7 +4,6 @@ REPOSITORIES=(
 	'external/wpa_supplicant_8'
     'frameworks/av'
     'system/core'
-    'system/netd'
 )
 
 for repository in "${REPOSITORIES[@]}"; do
