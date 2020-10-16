@@ -22,6 +22,7 @@ PRODUCT_PACKAGES += \
     audio.r_submix.default \
     audio.usb.default \
     libaudio-resampler \
+    libaudiopolicymanager \
     libtinymix \
     libtinyalsa \
     libtinycompress \
@@ -66,7 +67,19 @@ PRODUCT_PACKAGES += \
 
 # Misc
 PRODUCT_PACKAGES += \
-    libcurl
+    libcurl \
+    libdpframework \
+    libmemtrack \
+    libstlport \
+    clatd.conf \
+    bt_stack.conf \
+    bt_did.conf
+
+# DRM
+PRODUCT_PACKAGES += \
+    libdrm \
+    libmockdrmcryptoplugin \
+    libdrmclearkeyplugin
 
 # Sensor Calibration
 PRODUCT_PACKAGES += \

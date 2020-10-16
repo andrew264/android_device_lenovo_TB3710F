@@ -11,14 +11,11 @@ bin/nvram_agent_binder
 bin/nvram_daemon
 bin/pq
 bin/wmt_loader
-etc/audio_effects.conf
 etc/audio_policy.conf
 etc/bluetooth/auto_pair_blacklist.conf
 etc/bluetooth/auto_pair_devlist.conf
 etc/bluetooth/btconfig.xml
 etc/bluetooth/bt_did.conf
-etc/bluetooth/bt_stack.conf
-etc/clatd.conf
 etc/custom.conf
 etc/factory.ini
 etc/firmware/ROMv2_patch_1_0_hdr.bin
@@ -57,13 +54,11 @@ lib/libSwJpgCodec.so
 lib/lib_uree_mtk_crypto.so
 lib/lib_uree_mtk_video_secure_al.so
 lib/libaed.so
-lib/libaudio-resampler.so
 lib/libaudiocompensationfilter.so
 lib/libaudiocomponentengine.so
 lib/libaudiocustparam.so
 lib/libaudiodcrflt.so
 lib/libaudiomtkdcremoval.so
-lib/libaudiopolicymanager.so
 lib/libaudiosetting.so
 lib/libbessound_hd_mtk.so
 lib/libblisrc.so
@@ -99,7 +94,6 @@ lib/libdrmmtkwhitelist.so
 lib/libem_support_jni.so
 lib/libfeatureio.so
 lib/libfile_op.so
-lib/libfmjni.so
 lib/libgralloc_extra.so
 lib/libgui_ext.so
 lib/libhwm.so
@@ -108,7 +102,6 @@ lib/libimageio_plat_drv.so
 lib/libion_mtk.so
 lib/libm4u.so
 lib/libmatv_cust.so
-lib/libmemtrack.so
 lib/libmhalImageCodec.so
 lib/libmmprofile.so
 lib/libmnl.so
@@ -134,7 +127,6 @@ lib/libshowlogo.so
 lib/libspeech_enh_lib.so
 lib/libstagefright_memutil.so
 lib/libstagefrighthw.so
-lib/libstlport.so
 lib/libtz_uree.so
 lib/libui_ext.so
 lib/liburee_meta_drmkeyinstall_v2.so
